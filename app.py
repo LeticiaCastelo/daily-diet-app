@@ -1,19 +1,20 @@
 import streamlit as st
-import requests
-from meals.meals_list import meals
+from meals.page import show_meals
 
 API_URL = "http://127.0.0.1:5000"
 
 def main():
-    st.title("Daily Diet API - Statistics")
+        st.title("Daily Diet App")
 
-    menu_options = st.sidebar.selectbox(
-        'Selecione uma opção', 
-        ['Refeições Registradas']
-    )
+        menu_options = st.sidebar.selectbox(
+            'Selecione uma opção', 
+            ['Início','Refeições Registradas']
+        )
 
-    if menu_options == "Refeições Registradas":
-        meals()
+        if menu_options ==  "Início":
+            st.write('Tela de início')
+        if menu_options == "Refeições Registradas":
+            return show_meals()
 
 
 if __name__ == '__main__':
