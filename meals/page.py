@@ -41,7 +41,7 @@ meals = [
     }
 ]
 def show_meals():
-    st.write("Refeições Registradas")
+    st.header("Refeições Registradas")
     AgGrid(
         data = pd.DataFrame(meals),
         key='meals_grid', 
