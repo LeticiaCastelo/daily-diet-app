@@ -143,9 +143,9 @@ def show_dashboard():
     off_diet = all_meals - in_diet
 
     col1, col2, col3 = st.columns(3)  
-    col1.metric('Total de refeições registradas', all_meals)
-    col2.metric('Refeições dentro da dieta', in_diet)
-    col3.metric('Refeições fora da dieta', off_diet)
+    col1.metric('Total de refeições registradas', all_meals, border=True)
+    col2.metric('Refeições dentro da dieta', in_diet, border=True)
+    col3.metric('Refeições fora da dieta', off_diet, border=True)
 
 
     labels = 'Refeições dentro da diet', 'Refeições fora da dieta'
@@ -165,11 +165,11 @@ def show_dashboard():
 
     for i, (description, count) in enumerate(top_meals.items()):
         if i == 0:
-            col1.metric(label=f"1º - {description}", value=count)
+            col1.metric(label=f"1º - {description}", value=count, border=True)
         if i == 1:
-            col2.metric(label=f"2º - {description}", value=count)
+            col2.metric(label=f"2º - {description}", value=count, border=True)
         if i == 2:
-            col3.metric(label=f"3º - {description}", value=count)
+            col3.metric(label=f"3º - {description}", value=count, border=True)
     
     fig2, ax = plt.subplots(figsize=(3,3))
     ax.pie(top_meals.values, labels=top_meals.index,  autopct='%1.1f%%', startangle=90,
@@ -183,13 +183,13 @@ def show_dashboard():
     col1, col2, col3, col4 = st.columns(4) 
     for i, (name, count) in enumerate(meals_type.items()):
         if i == 0:
-            col1.metric(label=name, value=count)
+            col1.metric(label=name, value=count, border=True)
         if i == 1:
-            col2.metric(label=name, value=count)
+            col2.metric(label=name, value=count, border=True)
         if i == 2:
-            col3.metric(label=name, value=count)
+            col3.metric(label=name, value=count, border=True)
         if i == 3:
-            col4.metric(label=name, value=count)
+            col4.metric(label=name, value=count, border=True)
 
     fig3, ax = plt.subplots(figsize=(4,4))
     ax.pie(meals_type.values, labels=meals_type.index,  autopct='%1.1f%%', startangle=90,

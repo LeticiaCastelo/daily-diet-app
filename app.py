@@ -2,6 +2,7 @@ import streamlit as st
 from meals.page import show_meals
 from dashboard.page import show_dashboard
 
+
 API_URL = "http://127.0.0.1:5000"
 
 def main():
@@ -17,8 +18,7 @@ def main():
         if menu_options == "Refeições Registradas":
             return show_meals()
         if menu_options == "Dashboard":
-             return show_dashboard()
-
+            return show_dashboard()
 
 if __name__ == '__main__':
     main()
