@@ -191,8 +191,7 @@ def show_dashboard():
         if i == 3:
             col4.metric(label=name, value=count, border=True)
 
-    fig3, ax = plt.subplots(figsize=(4,4))
+    fig3, ax = plt.subplots(figsize=(3,3))
     ax.pie(meals_type.values, labels=meals_type.index,  autopct='%1.1f%%', startangle=90,
-       textprops={'fontsize': 6}, labeldistance=1.15, radius=0.7)
-    st.pyplot(fig3)
-    
+       textprops={'fontsize':8}, labeldistance=1.1)
+    st.pyplot(fig3) 
