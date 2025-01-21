@@ -32,30 +32,9 @@ meals = [
         "in_diet": True
     },
     {
-        "date": "30-12-2024",
-        "time": "20:30",
-        "name": "Jantar",
-        "description": "2 fatias de pizza",
-        "in_diet": False
-    },
-    {
-        "date": "31-12-2024",
-        "time": "08:10",
-        "name": "Café da Manhã",
-        "description": "Café preto sem açúcar",
-        "in_diet": True
-    },
-    {
         "date": "31-12-2024",
         "time": "12:10",
         "name": "Almoço",
-        "description": "Ovos cozidos",
-        "in_diet": True
-    },
-    {
-        "date": "30-12-2024",
-        "time": "15:30",
-        "name": "Lanche",
         "description": "Ovos cozidos",
         "in_diet": True
     },

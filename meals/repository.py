@@ -24,11 +24,11 @@ class MealsRepository:
             return None
         raise Exception(f'Erro ao obter dados da API. Status Code: {response.status_code}')
     
-    def create_meal(self, meals):
+    def create_meal(self, meal):
         response = requests.post(
             self.__new_meal_url,
             headers=self.__headers,
-            json=meals
+            json=meal
         )
         if response.status_code == 201:
             return response.json()
