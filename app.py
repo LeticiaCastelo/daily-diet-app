@@ -3,8 +3,6 @@ from dashboard.page import show_dashboard
 from login.page import show_login
 from meals.page import show_meals
 
-
-
 API_URL = "http://127.0.0.1:5000"
 
 def main():
