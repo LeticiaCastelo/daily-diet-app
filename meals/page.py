@@ -22,7 +22,7 @@ def show_meals():
 
     st.header('Cadastrar nova Refeição')
 
-    name = st.text_input('Nome da Refeição')
+    name = st.selectbox('Nome da Refeição', ['Café da Manhã', 'Almoço', 'Lanche', 'Jantar'])
     description= st.text_input('Descrição da Refeição'),
     date = st.date_input('Data da Refeição')
     time= st.time_input('Horário da Refeição')
@@ -41,6 +41,7 @@ def show_meals():
             in_diet=in_diet
         )
         if new_meal:
+            st.success("Refeição cadastrada com sucesso.")
             st.rerun()
         else:
             st.error("Erro ao cadastrar a refeição. Verifique os campos.")
