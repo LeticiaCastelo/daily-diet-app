@@ -1,5 +1,6 @@
 import streamlit as st
 from dashboard.page import show_dashboard
+from home.page import show_home
 from login.page import show_login
 from meals.page import show_meals
 
@@ -17,7 +18,7 @@ def main():
         )
 
         if menu_options ==  "Página Inicial":
-            st.write('Tela de início')
+            return show_home()
         if menu_options == "Refeições Registradas":
             return show_meals()
         if menu_options == "Dashboard":

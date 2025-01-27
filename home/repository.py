@@ -1,9 +1,8 @@
-
 import requests
 import streamlit as st
 from login.service import logout
 
-class DashboardRepository:
+class HomeRepository:
 
     def __init__(self):
         self.__base_url = 'http://127.0.0.1:5000'

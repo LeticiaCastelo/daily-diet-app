@@ -1,16 +1,15 @@
-import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
-from dashboard.service import DashboardService
+import pandas as pd
+from home.service import HomeService
+import plotly.express as px
 
-
-def show_dashboard():
-    dashboard_service = DashboardService()
-    meals = dashboard_service.get_meals()
+def show_home():
+    home_service = HomeService()
+    meals = home_service.get_meals()
 
     if meals:
 
-        st.header("Dashboard")
+        st.header("Estatísticas das Refeições")
         meals_df = pd.json_normalize(meals)
 
         all_meals = len(meals_df)
@@ -22,15 +21,16 @@ def show_dashboard():
         col2.metric('Refeições dentro da dieta', in_diet, border=True)
         col3.metric('Refeições fora da dieta', off_diet, border=True)
 
+        labels = ['Refeições dentro da dieta', 'Refeições fora da dieta']
+        values = [in_diet, off_diet]
 
-        labels = 'Refeições dentro da dieta', 'Refeições fora da dieta'
-        sizes = [in_diet, off_diet]
-        fig1, ax = plt.subplots(figsize=(3, 3))
-        ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90,
-        textprops={'fontsize': 8}, labeldistance=1.1)
-        ax.axis('equal')
+        fig1 = px.pie(
+            names=labels, 
+            values=values, 
+            hole=0.3,  
+        )
         
-        st.pyplot(fig1)
+        st.plotly_chart(fig1)
 
         st.divider()
         
@@ -46,10 +46,16 @@ def show_dashboard():
             if i == 2:
                 col3.metric(label=f"3º - {description}", value=count, border=True)
         
-        fig2, ax = plt.subplots(figsize=(3,3))
-        ax.pie(top_meals.values, labels=top_meals.index,  autopct='%1.1f%%', startangle=90,
-        textprops={'fontsize': 8}, labeldistance=1.1)
-        st.pyplot(fig2)
+        labels = top_meals.index
+        values = top_meals.values
+        
+        fig2 = px.pie(
+            names=labels, 
+            values=values, 
+            hole=0.3,   
+        )
+        
+        st.plotly_chart(fig2)
 
         st.divider()
 
@@ -66,10 +72,18 @@ def show_dashboard():
             if i == 3:
                 col4.metric(label=name, value=count, border=True)
 
-        fig3, ax = plt.subplots(figsize=(3,3))
-        ax.pie(meals_type.values, labels=meals_type.index,  autopct='%1.1f%%', startangle=90,
-        textprops={'fontsize':6}, labeldistance=1.1)
-        st.pyplot(fig3) 
+        labels = meals_type.index
+        values = meals_type.values
+        
+        fig3 = px.pie(
+            names=labels, 
+            values=values, 
+            hole=0.3,   
+             
+        )
+        
+        st.plotly_chart(fig3)
 
+        
     else:
         st.warning('Nenhuma refeição foi encontrada.')
